@@ -1,0 +1,57 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+
+.year-svg,
+.niveau-svg {
+	display: inline-block;
+	vertical-align: top;
+}
+
+.year-circle {
+	cursor: pointer;
+}
+
+.solidArc {
+	cursor: pointer;
+    transition: fill 0.5s ease;
+}
+
+.active,
+.solidArc:hover {
+	fill: #f67f19;
+}
+
+.year-title {
+	font-family: arial;
+	font-size: 16px;
+}
+
+text {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.line {
+  fill: none;
+  stroke-width: 1.5px;
+}
+
+.label {
+  text-anchor: middle;
+}
+
+.label rect {
+  fill: white;
+}
+
+.label-key {
+  font-weight: bold;
+}
