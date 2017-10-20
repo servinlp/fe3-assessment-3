@@ -27,8 +27,8 @@ This is the cleaned data I use for the second chart
 			{ i: 3, type: "havo, vwo, mbo", key: "all", value: 873 },
 			...
 		],
-		[ ... ], // Mannen
-		[ ... ] // Vrouwen
+		[ ... ], // Man
+		[ ... ] // Woman
 	],
 	2004: [
 		[
@@ -37,8 +37,8 @@ This is the cleaned data I use for the second chart
 			{ i: 3, type: "havo, vwo, mbo", key: "all", value: 873 },
 			...
 		],
-		[ ... ], // Mannen
-		[ ... ] // Vrouwen
+		[ ... ], // Man
+		[ ... ] // Woman
 	]
 }
 ```
