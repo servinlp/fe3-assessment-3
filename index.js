@@ -1,3 +1,4 @@
+// Resource gebruikt binnen setYears: http://bl.ocks.org/bbest/2de0e25d4840c68f2db1
 
 const margin = 25,
 	height = window.innerHeight,
@@ -100,12 +101,14 @@ function loadText( err, text ) {
 	setYears( years )
 	setEducation( school, firstYear )
 
+	console.log( years )
+	console.log( school )
+
 }
 
 
 function setYears( year ) {
 
-	// Resource hier gebruikt: http://bl.ocks.org/bbest/2de0e25d4840c68f2db1
 	const allValues = year.map( el => el.total ),
 		min = d3.min( allValues ), // Eerste jaar
 		max = d3.max( allValues ), // Laatste jaar
@@ -159,7 +162,7 @@ function setYears( year ) {
 
 
 	path.append( 'title' )
-		.text( ( d, i ) => `${d.data.year}: ${year[ i ].total / 1000}.000 mensen` )
+		.text( ( d, i ) => `${ d.data.year }: ${ year[ i ].total / 1000 }.000 mensen` )
 
 	path.append( 'text' )
 		.text( d => d.data.year )
@@ -256,7 +259,7 @@ function setEducation( school, year ) {
 		.select( 'text' )
 
 	// Zorg dat de value van de x as geroteerd is en goed staat
-	text.attr( 'transform', `rotate( 90 ) translate( ${text.node().getBBox().width + 20}, -15 )` )
+	text.attr( 'transform', `rotate( 90 ) translate( ${ text.node().getBBox().width + 20 }, -15 )` )
 
 	niveauSvg.append( 'text' )
 		.classed( 'year-title', true )
@@ -269,7 +272,7 @@ function updateSchoolForces( school, year ) {
 
 	// Nu nog update
 	yearSvg.select( '.year-title' )
-		.text( `Education level ${year} (2003 - 2013)` )
+		.text( `Education level ${ year } (2003 - 2013)` )
 
 	// Pak de huidige data die nodig is.
 	const series = school[ year ],
@@ -292,7 +295,7 @@ function updateSchoolForces( school, year ) {
 
 	// En als er nieuwe elementen zijn deze inladen
 	serie.enter().append( '.serie' )
-		.attr( 'transform', `translate( -${margin}, ${margin / 2} )` )
+		.attr( 'transform', `translate( -${ margin }, ${ margin / 2 } )` )
 
 
 	// Update (met transition) de path(lijn)
@@ -313,7 +316,7 @@ function updateSchoolForces( school, year ) {
 	// En ook de positie van de label aanpassen
 	label.transition()
 		.duration( 500 )
-		.attr( 'transform', ( d, i ) => `translate( ${ x( d.i )}, ${ y( d.value )} )` )
+		.attr( 'transform', ( d, i ) => `translate( ${ x( d.i ) }, ${ y( d.value ) } )` )
 
 	label.select( 'text' )
 		.text( d => d.value )
