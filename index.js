@@ -92,7 +92,7 @@ function loadText( err, text ) {
 
 			return Number( old ) + Number( neew )
 
-		}) // Geef mij het totaal aantal
+		}, 0) // Geef mij het totaal aantal
 
 		years.push( { year: noYear, total } )
 
