@@ -1,8 +1,8 @@
 // Resource gebruikt binnen setYears: http://bl.ocks.org/bbest/2de0e25d4840c68f2db1
 
 const margin = 25,
-	height = window.innerHeight,
-	width = window.innerWidth / 2, // Ik wil er 2 naast elkaar
+	height = window.innerHeight - 50,
+	width = ( window.innerWidth - 300 ) / 2, // Ik wil er 2 naast elkaar
 	radius = ( width / 2 ) - ( margin * 2 ), // Ik gebruik de width op x en y zodat dit beter in verhouding blijft.
     innerRadius = 0.15 * radius,
 	color = d3.scaleLinear()
