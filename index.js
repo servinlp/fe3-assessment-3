@@ -45,13 +45,14 @@ d3.text( 'labour_force.csv', loadText )
 function loadText( err, text ) {
 
 	if ( err ) console.log( err )
-	
+
 	console.log( text )
 
 	const noHeader = text.substring( text.lastIndexOf( '"x 1 000"' ) + 11, text.length ), // Verwijder de header
 		noFooter = noHeader.substring( 0, noHeader.indexOf( '�' ) - 1 ), // Verwijder de footer
 		data = d3.csvParseRows( noFooter ) // Van text naar csv
 
+	console.log( noFooter )
 	console.log( data )
 
 	data.forEach( el => {
