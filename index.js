@@ -93,7 +93,7 @@ function loadText( err, text ) {
 
 		let ell = el
 
-		if ( el.length === 1 ) ell = d3.csvParseRows( el[ 0 ] )
+		if ( el.length === 1 ) ell = el[ 0 ].split( ';' )
 
 		firstYear = ell[ 0 ]
 
