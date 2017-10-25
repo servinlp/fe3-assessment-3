@@ -107,10 +107,11 @@ function loadText( err, text ) {
 		const total = ell.reduce( ( old, neew ) => {
 
 			console.log( neew )
-			console.log( Number( neew ) )
-			console.log( parseInt( neew ) )
+			const neeew = neew.replace( '"', '' )
+			console.log( Number( neeew ) )
+			console.log( parseInt( neeew ) )
 
-			return Number( old ) + Number( neew )
+			return Number( old ) + Number( neeew )
 
 		}, 0) // Geef mij het totaal aantal
 
