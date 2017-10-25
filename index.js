@@ -57,30 +57,44 @@ function loadText( err, text ) {
 
 	data.forEach( el => {
 
-		if ( !school[ el[0] ] ) school[ el[0] ] = [] // bestaat school[ el[0] ] nog niet? Maak hem aan
+		let ell = el
 
-		const curr = school[ el[0] ]
+		if ( el.length === 1 ) {
+
+			ell = el[ 0 ].split( ';' )
+
+			ell.map( a => a.replace( '"', '' ) )
+
+			console.log( ell )
+
+		}
+
+		// ell[ 0 ] = ell[ 0 ].replace( '"', '' )
+
+		if ( !school[ ell[0] ] ) school[ ell[0] ] = [] // bestaat school[ ell[0] ] nog niet? Maak hem aan
+
+		const curr = school[ ell[0] ]
 		curr.push( [
-				{ i: 1, type: 'primary', key: 'all', value: Number( el[ 1 ] ) },
-				{ i: 2, type: 'vmbo, mbo1, avo', key: 'all', value: Number( el[ 3 ] ) },
-				{ i: 3, type: 'havo, vwo, mbo', key: 'all', value: Number( el[ 5 ] ) },
-				{ i: 4, type: 'hbo', key: 'all', value: Number( el[ 7 ] ) },
-				{ i: 5, type: 'wo', key: 'all', value: Number( el[ 9 ] ) },
-				{ i: 6, type: 'unknown', key: 'all', value: Number( el[ 11 ] ) }
+				{ i: 1, type: 'primary', key: 'all', value: Number( ell[ 1 ] ) },
+				{ i: 2, type: 'vmbo, mbo1, avo', key: 'all', value: Number( ell[ 3 ] ) },
+				{ i: 3, type: 'havo, vwo, mbo', key: 'all', value: Number( ell[ 5 ] ) },
+				{ i: 4, type: 'hbo', key: 'all', value: Number( ell[ 7 ] ) },
+				{ i: 5, type: 'wo', key: 'all', value: Number( ell[ 9 ] ) },
+				{ i: 6, type: 'unknown', key: 'all', value: Number( ell[ 11 ] ) }
 			], [
-				{ i: 1, type: 'primary', key: 'men', value: Number( el[ 1 + 13 ] ) },
-				{ i: 2, type: 'vmbo, mbo1, avo', key: 'men', value: Number( el[ 3 + 13 ] ) },
-				{ i: 3, type: 'havo, vwo, mbo', key: 'men', value: Number( el[ 5 + 13 ] ) },
-				{ i: 4, type: 'hbo', key: 'men', value: Number( el[ 7 + 13 ] ) },
-				{ i: 5, type: 'wo', key: 'men', value: Number( el[ 9 + 13 ] ) },
-				{ i: 6, type: 'unknown', key: 'men', value: Number( el[ 11 + 13 ] ) }
+				{ i: 1, type: 'primary', key: 'men', value: Number( ell[ 1 + 13 ] ) },
+				{ i: 2, type: 'vmbo, mbo1, avo', key: 'men', value: Number( ell[ 3 + 13 ] ) },
+				{ i: 3, type: 'havo, vwo, mbo', key: 'men', value: Number( ell[ 5 + 13 ] ) },
+				{ i: 4, type: 'hbo', key: 'men', value: Number( ell[ 7 + 13 ] ) },
+				{ i: 5, type: 'wo', key: 'men', value: Number( ell[ 9 + 13 ] ) },
+				{ i: 6, type: 'unknown', key: 'men', value: Number( ell[ 11 + 13 ] ) }
 			], [
-				{ i: 1, type: 'primary', key: 'woman', value: Number( el[ 1 + 25 ] ) },
-				{ i: 2, type: 'vmbo, mbo1, avo', key: 'woman', value: Number( el[ 3 + 25 ] ) },
-				{ i: 3, type: 'havo, vwo, mbo', key: 'woman', value: Number( el[ 5 + 25 ] ) },
-				{ i: 4, type: 'hbo', key: 'woman', value: Number( el[ 7 + 25 ] ) },
-				{ i: 5, type: 'wo', key: 'woman', value: Number( el[ 9 + 25 ] ) },
-				{ i: 6, type: 'unknown', key: 'woman', value: Number( el[ 11 + 25 ] ) }
+				{ i: 1, type: 'primary', key: 'woman', value: Number( ell[ 1 + 25 ] ) },
+				{ i: 2, type: 'vmbo, mbo1, avo', key: 'woman', value: Number( ell[ 3 + 25 ] ) },
+				{ i: 3, type: 'havo, vwo, mbo', key: 'woman', value: Number( ell[ 5 + 25 ] ) },
+				{ i: 4, type: 'hbo', key: 'woman', value: Number( ell[ 7 + 25 ] ) },
+				{ i: 5, type: 'wo', key: 'woman', value: Number( ell[ 9 + 25 ] ) },
+				{ i: 6, type: 'unknown', key: 'woman', value: Number( ell[ 11 + 25 ] ) }
 			]
 		) // Sorteer alles en push dit
 
@@ -99,24 +113,14 @@ function loadText( err, text ) {
 
 		firstYear = firstYear.replace( '"', '' )
 
-		console.log( ell )
-		console.log( firstYear )
-
 		const noYear = ell.shift() // Verwijder eerst in de arr. Is year.
 
 		const total = ell.reduce( ( old, neew ) => {
 
-			console.log( neew )
 			const neeew = neew.replace( '"', '' )
-			console.log( Number( neeew ) )
-			console.log( parseInt( neeew ) )
-
 			return Number( old ) + parseInt( neeew )
 
 		}, 0) // Geef mij het totaal aantal
-
-		console.log( total )
-		console.log( noYear )
 
 		years.push( { year: noYear, total } )
 
