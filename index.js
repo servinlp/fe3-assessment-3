@@ -81,6 +81,8 @@ function loadText( err, text ) {
 
 	})
 
+	console.log( data )
+
 	// Zet de data voor de jaar piechart
 	data.forEach( ( el, i ) => {
 
