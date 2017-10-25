@@ -63,7 +63,7 @@ function loadText( err, text ) {
 
 			ell = el[ 0 ].split( ';' )
 
-			ell.map( a => {
+			const newShit = ell.map( a => {
 
 				console.log( a )
 
@@ -72,6 +72,7 @@ function loadText( err, text ) {
 			})
 
 			console.log( ell )
+			console.log( newShite )
 
 		}
 
