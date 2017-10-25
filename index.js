@@ -97,12 +97,18 @@ function loadText( err, text ) {
 
 		firstYear = ell[ 0 ]
 
+		firstYear = firstYear.replace( '"', '' )
+
 		console.log( ell )
 		console.log( firstYear )
 
 		const noYear = ell.shift() // Verwijder eerst in de arr. Is year.
 
 		const total = ell.reduce( ( old, neew ) => {
+
+			console.log( neew )
+			console.log( Number( neew ) )
+			console.log( parseInt( neew ) )
 
 			return Number( old ) + Number( neew )
 
