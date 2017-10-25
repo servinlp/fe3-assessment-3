@@ -111,7 +111,7 @@ function loadText( err, text ) {
 			console.log( Number( neeew ) )
 			console.log( parseInt( neeew ) )
 
-			return Number( old ) + Number( neeew )
+			return Number( old ) + parseInt( neeew )
 
 		}, 0) // Geef mij het totaal aantal
 
