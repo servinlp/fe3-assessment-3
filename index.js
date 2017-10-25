@@ -46,14 +46,9 @@ function loadText( err, text ) {
 
 	if ( err ) console.log( err )
 
-	console.log( text )
-
 	const noHeader = text.substring( text.lastIndexOf( '"x 1 000"' ) + 11, text.length ), // Verwijder de header
 		noFooter = noHeader.substring( 0, noHeader.indexOf( '�' ) - 1 ), // Verwijder de footer
 		data = d3.csvParseRows( noFooter ) // Van text naar csv
-
-	console.log( noFooter )
-	console.log( data )
 
 	data.forEach( el => {
 
@@ -65,15 +60,11 @@ function loadText( err, text ) {
 
 			ell = ell.map( a => a.replace( '"', '' ).replace( '"', '' ) )
 
-			console.log( ell )
-
 		}
 
-		// ell[ 0 ] = ell[ 0 ].replace( '"', '' )
+		if ( !school[ ell[ 0 ] ] ) school[ ell[ 0 ] ] = [] // bestaat school[ ell[0] ] nog niet? Maak hem aan
 
-		if ( !school[ ell[0] ] ) school[ ell[0] ] = [] // bestaat school[ ell[0] ] nog niet? Maak hem aan
-
-		const curr = school[ ell[0] ]
+		const curr = school[ ell[ 0 ] ]
 		curr.push( [
 				{ i: 1, type: 'primary', key: 'all', value: Number( ell[ 1 ] ) },
 				{ i: 2, type: 'vmbo, mbo1, avo', key: 'all', value: Number( ell[ 3 ] ) },
@@ -99,8 +90,6 @@ function loadText( err, text ) {
 		) // Sorteer alles en push dit
 
 	})
-
-	console.log( data )
 
 	// Zet de data voor de jaar piechart
 	data.forEach( ( el, i ) => {
@@ -128,9 +117,6 @@ function loadText( err, text ) {
 
 	setYears( years )
 	setEducation( school, firstYear )
-
-	console.log( years )
-	console.log( school )
 
 }
 
@@ -310,14 +296,7 @@ function updateSchoolForces( school, year ) {
 
 		y = ySchool.domain( [
 				0,
-				Math.ceil( d3.max( series, s => {
-					console.log( series )
-					console.log( s )
-					return d3.max(s, d => {
-						console.log( d )
-						return d.value
-					} )
-				} ) / 1000 ) * 1000
+				Math.ceil( d3.max( series, s => d3.max(s, d => d.value ) ) / 1000 ) * 1000
 			] )
 			.range( [ width - ( margin * 2 ), 0 ] ),
 
