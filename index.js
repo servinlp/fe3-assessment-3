@@ -63,7 +63,13 @@ function loadText( err, text ) {
 
 			ell = el[ 0 ].split( ';' )
 
-			ell.map( a => a.replace( '"', '' ) )
+			ell.map( a => {
+
+				console.log( a )
+
+				return a.replace( '"', '' )
+
+			})
 
 			console.log( ell )
 
