@@ -306,7 +306,14 @@ function updateSchoolForces( school, year ) {
 
 		y = ySchool.domain( [
 				0,
-				Math.ceil( d3.max( series, s => d3.max(s, d => d.value ) ) / 1000 ) * 1000
+				Math.ceil( d3.max( series, s => {
+					console.log( series )
+					console.log( s )
+					return d3.max(s, d => {
+						console.log( d )
+						return d.value
+					} )
+				} ) / 1000 ) * 1000
 			] )
 			.range( [ width - ( margin * 2 ), 0 ] ),
 
