@@ -94,6 +94,8 @@ function loadText( err, text ) {
 
 		}, 0) // Geef mij het totaal aantal
 
+		console.log( total )
+
 		years.push( { year: noYear, total } )
 
 	})
