@@ -91,13 +91,17 @@ function loadText( err, text ) {
 	// Zet de data voor de jaar piechart
 	data.forEach( ( el, i ) => {
 
-		firstYear = el[ 0 ]
+		let ell = el
 
-		console.log( el )
+		if ( el.length === 1 ) ell = d3.csvParseRows( el )
 
-		const noYear = el.shift() // Verwijder eerst in de arr. Is year.
+		firstYear = ell[ 0 ]
 
-		const total = el.reduce( ( old, neew ) => {
+		console.log( ell )
+
+		const noYear = ell.shift() // Verwijder eerst in de arr. Is year.
+
+		const total = ell.reduce( ( old, neew ) => {
 
 			return Number( old ) + Number( neew )
 
