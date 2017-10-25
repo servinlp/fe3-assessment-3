@@ -72,7 +72,7 @@ function loadText( err, text ) {
 			})
 
 			console.log( ell )
-			console.log( newShite )
+			console.log( newShit )
 
 		}
 
