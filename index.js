@@ -98,6 +98,7 @@ function loadText( err, text ) {
 		firstYear = ell[ 0 ]
 
 		console.log( ell )
+		console.log( firstYear )
 
 		const noYear = ell.shift() // Verwijder eerst in de arr. Is year.
 
