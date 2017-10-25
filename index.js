@@ -45,10 +45,14 @@ d3.text( 'labour_force.csv', loadText )
 function loadText( err, text ) {
 
 	if ( err ) console.log( err )
+	
+	console.log( text )
 
 	const noHeader = text.substring( text.lastIndexOf( '"x 1 000"' ) + 11, text.length ), // Verwijder de header
 		noFooter = noHeader.substring( 0, noHeader.indexOf( '�' ) - 1 ), // Verwijder de footer
 		data = d3.csvParseRows( noFooter ) // Van text naar csv
+
+	console.log( data )
 
 	data.forEach( el => {
 
@@ -88,6 +92,8 @@ function loadText( err, text ) {
 
 		firstYear = el[ 0 ]
 
+		console.log( el )
+
 		const noYear = el.shift() // Verwijder eerst in de arr. Is year.
 
 		const total = el.reduce( ( old, neew ) => {
@@ -97,6 +103,7 @@ function loadText( err, text ) {
 		}, 0) // Geef mij het totaal aantal
 
 		console.log( total )
+		console.log( noYear )
 
 		years.push( { year: noYear, total } )
 
